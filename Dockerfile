@@ -63,4 +63,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/* && \
     npm install gulp-cli -g
-    
+
+EXPOSE 80
+
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
