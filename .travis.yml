@@ -1,0 +1,9 @@
+services:
+  - docker
+
+install:
+  - docker build -t drupal-ci-base .
+  - docker run -d -p 127.0.0.1:80:80 --name drupal-ci-base drupal-ci-base
+
+script:
+  - docker ps | grep -q drupal-ci-base
