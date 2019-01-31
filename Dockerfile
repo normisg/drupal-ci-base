@@ -47,7 +47,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/www && \
-    a2enmod rewrite
+    a2dismod mpm_event \
+    a2enmod rewrite \
+    a2enmod php7.2
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
 
 # install composer
